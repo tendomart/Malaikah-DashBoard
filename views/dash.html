@@ -1,0 +1,257 @@
+<html>
+<head>
+<meta charset="utf-8">
+                <!--Form title-->
+                <title>Malaika - Patient Dashboard</title>
+      <link type="text/css" href="/css/w3css.css" rel="stylesheet" />
+       <link type="text/css" href="/css/dash.css" rel="stylesheet" />
+     <link type="text/css" href="/css/searchBar.css" rel="stylesheet" />
+     
+     <link type="text/css" href="/css/chart.css" rel="stylesheet" />
+            <!--Use External Javascript files-->  
+    
+    <script type="text/javascript" src="/js/dash.js"></script>
+     <script type="text/javascript" src="/js/tabs.js"></script>
+      <!-- <script type="text/javascript" src="/js/visitChart.js"></script> -->
+      <script type="text/javascript" src="/js/visitApexChart.js"></script>
+<!--Use cloudfare Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+      </script>
+      <script type="text/javascript" src = "/js/jquery-1.12.4.js"></script>
+      <script type="text/javascript" src = "/js/highcharts.js"></script>
+            </head>
+<body id="body" onload="load()">
+
+<!--Menu Side Bar Displaying Menu Items -->
+	<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Home</a>
+  <a href="#" class="w3-bar-item w3-button">Register Patient</a>
+  <a href="#" class="w3-bar-item w3-button">Logout </a>
+</div>
+
+<!--Create  Header Container with Sidebar and Title -->
+<div w3-container id="main">
+ <div class="w3-teal w3-row">
+  <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div class="w3-container w3-col w3-row-padding">
+  	<!-- <button id="openNav" class="w3-button w3-teal w3-xlarge   s3 w3-container" onclick="w3_open()">&#9776;</button>
+  -->
+    <h2 class="w3-container w3-center">Malaikah Medical Center - Data Control System </h2>
+   <!--  <form action="#" class=" w3-col w3-container">
+      <input type="text" placeholder="Search.." name="search" id="searchBar">
+      <button type="submit" id="searchBtn"><i class="fa fa-search s3"></i></button>
+    </form>
+ -->
+
+</div>
+</div>
+
+<!--Cohort BuliderSearch Bar-->
+
+
+
+</div>
+
+<!-- Visit Cohort Graph Builder-->
+<!--Should Make ajax Call and generate graph based selected Dates and Visit type e.g Gynaecology-->
+<div class="w3-container  w3-row w3-padding"><form>
+  <div class=" w3-button"><button type="search" class="w3-teal">Search For Patient</button></div>
+   
+  <div class="w3-button"><button type="button" class="w3-green">Add Patient</button></div>
+  
+   <div class=" w3-col s3 w3-container" >Start Date <input type="date" class=""></div>
+ <div class=" w3-col s3 w3-container" >End Date <input type="date" class=""></div>
+ <div class="w3-col s3 w3-container">
+  
+  <select id="country"  name="visitType">
+    <option value="">--Select Visit--</option>
+  <option value="Gyneacology">Gyneacology</option>
+  <option value="Pediatrics">Pediatrics </option>
+  <option value="Non - Communicable Diseases">Non - Communicable Diseases</option>
+  </select>
+</form>
+
+</div>
+
+
+
+  <!--Search Bar-->
+ <!--  <form action="#" class=" w3-col s3 w3-container">
+      <input type="text" placeholder="Search.." name="search" id="searchBar">
+      <button type="submit" id="searchBtn"><i class="fa fa-search"></i></button>
+    </form>
+  </div> -->
+
+<!--Switch Tabs And  Graph Main Division-->
+
+<div class="w3-container">
+
+<!-- Switch Tab Division-->
+	 <div class="w3-row">
+	 	<!--See Graphs-->
+    <a href="javascript:void(0)" onclick="openTab(event, 'Graph');">
+      <div class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding w3-blue">See Patient Graphs</div>
+    </a>
+
+    <!--Homecare  Div-->
+    <a href="javascript:void(0)" onclick="openTab(event, 'HomeVisit');">
+      <div class="w3-half tablink w3-bottombar w3-hover-light-green w3-padding w3-teal">Home Care Information</div>
+    </a>
+    
+  </div>
+	
+       <!--Divs containing Tab data-->
+       <!--Patient Visit Tabs Area-->
+       <div id="Graph" class="w3-container city" style="display:none">
+    <!-- <h2>Patient Visit Graphs</h2> -->
+   <!--  <p>London is the capital city of England.</p> -->
+    <div class="w3-row-padding w3-margin-top">
+      <!--Chart Continer-->
+       <div class="w3-container graph" id="graph" style="width:100%; height:400px;"></div>
+      <!-- <div class="w3-quarter">
+             
+                <div  class="w3-card-2 w3-btn w3-ripple w3-teal" style="width: 300px;height: 250px;">
+                <div class="w3-container">
+                    <p><h2>Lor3m Ipsum<br>Helos</h2></h2></p>
+        
+                </div>
+                </div>
+                </div> -->
+
+
+               
+
+
+    </div>
+        
+  </div>
+<!--Home Visit Area-->
+  <div id="graph" >
+    <!-- <h2>Home Care Information</h2> -->
+   <!--  <p>Paris is the capital of France.</p>  -->
+  </div>
+	
+
+           
+</div>
+
+
+<!--Graph Js-->
+
+
+<script type="text/javascript">
+  function load(){
+document.getElementById('graph').style.display="block";
+}
+
+  let a =Math.floor(Math.random() * 11); 
+     let b =Math.floor(Math.random() * 51);
+      let c =Math.floor(Math.random() * 150);
+         // $(document).ready(function() {
+         //    var title = {
+         //       text: 'Patient Visits'   
+         //    };
+         //    var subtitle = {
+         //       text: 'Malaika Medical Center'
+         //    };
+         //    var xAxis = {
+         //       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+         //          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+         //    };
+         //    var yAxis = {
+         //       title: {
+         //          // text: 'Patient Number (\xB0C)'
+         //           text: 'Patient Number '
+         //       },
+         //       plotLines: [{
+         //          value: 0,
+         //          width: 1,
+         //          color: '#808080'
+         //       }]
+         //    };   
+
+         //    var tooltip = {
+         //       // valueSuffix: '\xB0C'
+         //       valueSuffix: ''
+         //    }
+         //    var legend = {
+         //       layout: 'vertical',
+         //       align: 'right',
+         //       verticalAlign: 'middle',
+         //       borderWidth: 2
+         //    };
+         //    var series =  [{
+         //          name: 'Gyneacology',
+         //          data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2,
+         //             26.5, 23.3, 18.3, 13.9, 9.6]
+         //       }, 
+         //       {
+         //          name: 'Pediatrics',
+         //          data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 
+         //             24.1, 20.1, 14.1, 8.6, 2.5]
+         //       }, 
+         //       {
+         //          name: 'NCDs',
+         //          data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6,
+         //             17.9, 14.3, 9.0, 3.9, 1.0]
+         //       // }, 
+         //       // {
+         //       //    name: 'London',
+         //       //    data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 
+         //       //       16.6, 14.2, 10.3, 6.6, 4.8]
+         //       // }
+         //    ];
+
+         //    var json = {};
+         //    json.title = title;
+         //    json.subtitle = subtitle;
+         //    json.xAxis = xAxis;
+         //    json.yAxis = yAxis;
+         //    json.tooltip = tooltip;
+         //    json.legend = legend;
+         //    json.series = series;
+
+         //    $('#graph').highcharts(json);
+         // });
+
+
+let data = Math.rand
+
+document.addEventListener('DOMContentLoaded', function () {
+    var myChart = Highcharts.chart('graph', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Patient Visit Count Statistics'
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Patient Visits'
+            }
+        },
+        series: [{
+                   name: 'Gyneacology',
+                   data: [a,b,c,50,10,77,80,93,20,101,120,90]
+                }, 
+                {
+                   name: 'Pediatrics',
+                   data: [2,12,67,92,90,20,13,76,23,65,20,34]
+                },
+          {
+           name: 'NCD`s',
+           data: [2,34,25,36,60,56,70,45,32,90,10,5,10]
+         }]
+    });
+});
+         
+      </script>
+</body>
+</html>

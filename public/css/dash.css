@@ -1,0 +1,13 @@
+#body{
+	background-color: rgb('36','31','31');
+}
+
+#main{
+	/*height: 50px;*/
+	background-color: red
+}
+
+
+logo{
+	border-image-source: "";
+}
