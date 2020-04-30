@@ -19,6 +19,6 @@
   "dependencies": {
     "apexcharts": "^3.8.1",
     "highcharts": "^7.1.2",
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   }
 }
