@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/tendomart/Malaika-Patient-Tracking#readme",
   "dependencies": {
-    "apexcharts": "^3.8.1",
+    "apexcharts": "^3.24.0",
     "highcharts": "^7.1.2",
     "jquery": "^3.4.1"
   }
